@@ -1,16 +1,18 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from '../Pages/Shared/Navbar/Navbar';
-import Footer from '../Pages/Shared/Footer/Footer';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "../Pages/Shared/Navbar/Navbar";
+import Footer from "../Pages/Shared/Footer/Footer";
 
 const Root = () => {
-    return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
-        </div>
-    );
+  return (
+    <div>
+      <div className="max-w-6xl mx-auto">
+        <Navbar></Navbar>
+        <Outlet></Outlet>
+      </div>
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default Root;
