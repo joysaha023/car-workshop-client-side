@@ -3,6 +3,26 @@ import logo from "../../../assets/logo.svg"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+    const navItems = (
+        <>
+           <li>
+              <a>Home</a>
+            </li>
+            <li>
+              <a>About</a>
+            </li>
+            <li>
+              <a>Services</a>
+            </li>
+            <li>
+              <a>Blog</a>
+            </li>
+            <li>
+              <a>Contact</a>
+            </li>
+        </>
+    )
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -27,52 +47,18 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navItems}
           </ul>
         </div>
-        <Link className="btn btn-ghost text-xl"><img src={logo} alt="img" /></Link>
+        <Link className="btn  btn-ghost text-xl"><img className="h-[90%]" src={logo} alt="img" /></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+         {navItems}
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+      <button className="btn btn-md btn-outline border-[#FF3811] hover:bg-[#FF3811]  text-[#FF3811]">Appointment</button>
       </div>
     </div>
   );
