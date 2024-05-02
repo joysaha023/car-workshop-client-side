@@ -58,6 +58,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+        <Link to={"/login"} className="btn btn-accent">Login</Link>
       <button className="btn btn-md btn-outline border-[#FF3811] hover:bg-[#FF3811]  text-[#FF3811]">Appointment</button>
       </div>
     </div>
