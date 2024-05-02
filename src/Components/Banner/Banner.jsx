@@ -8,7 +8,7 @@ const Banner = () => {
           src="https://i.ibb.co/w0SDyFm/1.jpg"
           className="w-full"
         />
-        <div className="absolute  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] h-full w-full">
+        <div className="absolute bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] h-full w-full">
           <h2 className="text-white text-5xl font-bold">Affordable Price For Car Servicing</h2>
           <p className="text-white">There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
           <div>
