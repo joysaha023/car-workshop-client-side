@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import CheckOut from "../Pages/CheckOut/CheckOut";
+import Bookings from "../Pages/Bookings/Bookings";
 
 
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         {
           path: "/checkout/:id",
           element: <CheckOut></CheckOut>
+        },
+        {
+          path: "/bookings",
+          element: <Bookings></Bookings>
         }
       ]
     },

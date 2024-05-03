@@ -1,8 +1,18 @@
 import React from "react";
 import logo from "../../../assets/logo.svg"
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const Navbar = () => {
+  const {user, logout} = useAuth();
+
+  const handlelogout = () => {
+    logout()
+    .then(result => {
+      alert('logout succefully')
+    })
+    .catch()
+  }
 
     const navItems = (
         <>
@@ -15,9 +25,13 @@ const Navbar = () => {
             <li>
               <a>Services</a>
             </li>
-            <li>
+            {
+              user ? (<li>
+                <Link to={"/bookings"}>Bookings</Link>
+              </li>) : (<li>
               <a>Blog</a>
-            </li>
+            </li>)
+            }
             <li>
               <a>Contact</a>
             </li>
@@ -58,7 +72,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"} className="btn btn-accent">Login</Link>
+        {
+          user ? (<button onClick={handlelogout} className="btn btn-primary">Logout</button>) : (<Link to={"/login"} className="btn btn-accent">Login</Link>)
+        }
       <button className="btn btn-md btn-outline border-[#FF3811] hover:bg-[#FF3811]  text-[#FF3811]">Appointment</button>
       </div>
     </div>
