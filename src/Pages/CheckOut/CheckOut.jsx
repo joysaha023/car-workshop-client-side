@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { alpha } from "@mui/material";
 
 const CheckOut = () => {
   const { id } = useParams();
+  const { user } = useAuth();
   const [singleData, setSingleData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +23,34 @@ const CheckOut = () => {
     const date = form.date.value;
     const email = form.email.value;
     const price = form.price.value;
-    
+    const service = singleData.title;
+    const service_id = singleData._id;
+    const image = singleData.img;
+    const order = {
+        customerName: name,
+        service,
+        service_id,
+        image,
+        email, 
+        date, 
+        price: price
+    }
+    console.log(order);
+
+    fetch('http://localhost:5000/bookings', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        }, 
+        body: JSON.stringify(order)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        if(data.insertedId){
+            alert('service book successfully')
+        }
+    })
   }
 
   return (
@@ -36,7 +66,7 @@ const CheckOut = () => {
               <input
                 type="text"
                 placeholder="First Name"
-                name="fname"
+                name="name"
                 className="input input-bordered"
                 required
               />
@@ -62,10 +92,10 @@ const CheckOut = () => {
               </label>
               <input
                 type="text"
-                placeholder="email"
+                defaultValue={user.email}
                 name="email"
                 className="input input-bordered"
-                required
+                readOnly
               />
             </div>
             <div className="form-control w-full">
