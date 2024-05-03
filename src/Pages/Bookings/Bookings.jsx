@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import BookRow from "../../Components/BookRow/BookRow";
 
 const Bookings = () => {
   const { user } = useAuth();
@@ -25,17 +26,17 @@ const Bookings = () => {
                   <input type="checkbox" className="checkbox" />
                 </label>
               </th>
+              <th>Service</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Price</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            
+                {
+                    bookings.map(item => <BookRow key={item._id} item={item}></BookRow>)
+                }
           </tbody>
-          {/* foot */}
-         
         </table>
       </div>
     </div>
