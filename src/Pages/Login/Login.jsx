@@ -2,6 +2,7 @@ import React from "react";
 import loginImg from "../../assets/login.svg"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
 
 const Login = () => {
     const {signIn} = useAuth();
@@ -17,8 +18,17 @@ const Login = () => {
 
         signIn(email, password)
         .then(result => {
-            console.log(result.user);
-            navigate(location?.state ? location?.state : '/')
+           const loggedInUser = result.user;
+           console.log(loggedInUser)
+           const user = { email };
+            // navigate(location?.state ? location?.state : '/')
+
+            //get access token
+            axios.post('http://localhost:5000/jwt', user)
+            .then(res => {
+              console.log(res.data)
+            })
+
         })
         .catch(error => {
             console.log(error)
