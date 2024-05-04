@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import BookRow from "../../Components/BookRow/BookRow";
+import axios from "axios";
 
 const Bookings = () => {
   const { user } = useAuth();
@@ -8,9 +9,15 @@ const Bookings = () => {
 
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setBookings(data));
+
+    axios.get(url, {withCredentials: true})
+    .then(res => {
+      setBookings(res.data);
+    })
+
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => setBookings(data));
   }, []);
 
   return (
