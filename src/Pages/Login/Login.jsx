@@ -1,10 +1,12 @@
 import React from "react";
 import loginImg from "../../assets/login.svg"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
     const {signIn} = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     const handleLogin = (e) => {
@@ -15,7 +17,8 @@ const Login = () => {
 
         signIn(email, password)
         .then(result => {
-            console.log(result.user)
+            console.log(result.user);
+            navigate(location?.state ? location?.state : '/')
         })
         .catch(error => {
             console.log(error)
